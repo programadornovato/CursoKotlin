@@ -1,9 +1,9 @@
 import javax.swing.JOptionPane
 import Matematicas.Basicas
 fun main(args:Array<String>){
-    var mat=Basicas(1,2)
-    println("Suma=${mat.suma()}")
-    println("Resta=${mat.resta()}")
-    println("Multiplicacion=${mat.multiplicacion()}")
-    println("Divicion=${mat.divicion()}")
+    var e1=Empleado()
+    e1.edad=20
+    println(e1.edad)
+    e1.nombre="juan"
+    println(e1.nombre)
 }
