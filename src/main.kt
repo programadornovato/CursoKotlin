@@ -1,9 +1,11 @@
 import javax.swing.JOptionPane
 import Matematicas.Basicas
 fun main(args:Array<String>){
-    var e1=Empleado()
-    e1.edad=20
-    println(e1.edad)
-    e1.nombre="juan"
-    println(e1.nombre)
+    var c1=MiClase()
+    println("c1.normal=${c1.normal}")
+    c1.normal="Modificando el atributo normal"
+    println("c1.normal=${c1.normal}")
+    println("MiClase.estatico=${MiClase.estatico}")
+    MiClase.estatico="Modificando el atributo estatico"
+    println("MiClase.estatico=${MiClase.estatico}")
 }
