@@ -1,19 +1,25 @@
 import javax.swing.JOptionPane
 
 fun main(args:Array<String>){
-    var perimetro:Double=0.0
-    var area:Double=0.0
-    var c:Cuadrilatero
-    var opcion=JOptionPane.showInputDialog("Humano que figura quieres calcular\n1.- Cuadrado\n2.- Rectangulo").toInt()
-    if(opcion==1){
-        var lado=JOptionPane.showInputDialog("Humano ingresa el lado de tu Cuadrado").toDouble()
-        c=Cuadrilatero(lado)
-    }else if(opcion==2){
-        var ladoa=JOptionPane.showInputDialog("Humano ingresa el lado a de tu rectangulo").toDouble()
-        var ladob=JOptionPane.showInputDialog("Humano ingresa el lado b de tu rectangulo").toDouble()
-        c=Cuadrilatero(ladoa, ladob)
-    }else{
-        c=Cuadrilatero(0.0)
+    var cantAlumnos=JOptionPane.showInputDialog("Humano ingresa la cantidad de alumnos de tu escuela").toInt()
+    var a=Array<Alumnos?>(cantAlumnos){null}
+    for (i in 0 until cantAlumnos){
+        var nombre=JOptionPane.showInputDialog("Humano ingresa el nombre del alumno ${i+1}")
+        var aula=JOptionPane.showInputDialog("Humano ingresa el aula del alumno ${i+1}")[0]
+        var calificacion=JOptionPane.showInputDialog("Humano ingresa la calificacion del alumno ${i+1}").toDouble()
+        a[i]=Alumnos(nombre, aula)
+        a[i]!!.calificacion=calificacion
     }
-    JOptionPane.showMessageDialog(null,"Humano este es tu piche perimetro ${c.perimetro} y tu pinche area ${c.area}")
+    var suma=0.0
+    var promedio=0.0
+    var cantAlumnosPorSalon=0
+    var salon=JOptionPane.showInputDialog("Humano ingresa el salon de los alumnos a promediar")[0]
+    for(i in 0 until cantAlumnos){
+        if(salon==a[i]!!.aula){
+            suma=suma+a[i]!!.calificacion
+            cantAlumnosPorSalon++
+        }
+    }
+    promedio=suma/cantAlumnosPorSalon
+    JOptionPane.showMessageDialog(null,"El promedio de los alumnos del salon $salon es $promedio")
 }
