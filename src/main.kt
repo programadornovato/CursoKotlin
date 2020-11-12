@@ -1,30 +1,12 @@
 import javax.swing.JOptionPane
 
 fun main(args:Array<String>){
-    //listaNormal()
-    listaDinamica()
-}
-fun listaNormal(){
-    var numElementos=JOptionPane.showInputDialog("Humano coloca la cantidad de elementos de tu lista").toInt()
-    var listaEstatica= arrayOfNulls<Int>(numElementos)
-    for(i in 0 until numElementos){
-        listaEstatica[i]=JOptionPane.showInputDialog("Ingresa un numero").toInt()
+    var v= arrayOfNulls<Vehiculo>(4)
+    v[0]=Vehiculo("XDSDF445","Nissan","2010")
+    v[1]=tipoTurismo("XDFGHJ777","Nissan","2018",5)
+    v[2]=tipoDeportivo("TTYYHH666","Nissan","2010",8)
+    v[3]=tipoFurgoneta("FDSEEW5666","Nissan","2015",20)
+    for (i in v.indices){
+        println(v[i]!!.entregarDatos())
     }
-    println("Aqui esta tu pinche lista")
-    listaEstatica.forEach {
-        println(it)
-    }
-}
-fun listaDinamica(){
-    var listaDinamica=ArrayList<Int>()
-    var respuesta:Char
-    do {
-        listaDinamica.add(JOptionPane.showInputDialog("Ingresa un numero").toInt())
-        respuesta=JOptionPane.showInputDialog("Quieres continuar s/n")[0]
-    }while ( respuesta=='s' || respuesta=='S' )
-    println("Aqui esta tu pinche lista")
-    listaDinamica.forEach {
-        println(it)
-    }
-
 }
