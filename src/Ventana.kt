@@ -7,5 +7,6 @@ class Ventana(titulo:String?):JFrame(titulo){
         var d=Dimension(500,500)
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
+        //this.setLocation(500,500)
     }
 }
