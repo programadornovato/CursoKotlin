@@ -1,5 +1,6 @@
 import java.awt.Color
 import java.awt.Dimension
+import java.awt.Font
 import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
@@ -72,5 +73,28 @@ class Ventana(titulo:String?):JFrame(titulo){
 
         e1.verticalAlignment=SwingConstants.TOP
         e2.verticalAlignment=SwingConstants.BOTTOM
+        /*
+        name
+        DIALOG = "Dialog";
+        DIALOG_INPUT = "DialogInput";
+        SANS_SERIF = "SansSerif";
+        SERIF = "Serif";
+
+        style
+        PLAIN       = 0;
+        BOLD        = 1;
+        ITALIC      = 2;
+        */
+
+        /*
+        //var fuente=Font(Font.DIALOG,Font.ITALIC,15)
+        e1.font=Font(Font.DIALOG,Font.ITALIC,15)
+        e2.font=Font(Font.MONOSPACED,Font.BOLD,15)
+        e3.font=Font(Font.SERIF,Font.CENTER_BASELINE,15)
+        */
+        e1.font=Font("Cambria",Font.ITALIC,15)
+        e2.font=Font("Amiri",Font.BOLD,15)
+        e3.font=Font("Bahnschrift Condensed",Font.CENTER_BASELINE,15)
+
     }
 }
