@@ -31,9 +31,9 @@ class Ventana(titulo:String?):JFrame(titulo){
         //panel3!!.setVisible(false)
     }
     fun agregarEtiquetas(){
-        var e1=JLabel("<html>Hola humano yo soy la etiqueta 1 dentro del panel1</html>")
-        var e2=JLabel("<html>Hola humano yo soy la etiqueta 2 dentro del panel2</html>")
-        var e3=JLabel("<html>Hola humano yo soy la etiqueta 3 dentro del panel3</html>")
+        var e1=JLabel("<html>Hola1</html>")
+        var e2=JLabel("<html>Hola2</html>")
+        var e3=JLabel("<html>Hola3</html>")
         panel1!!.add(e1)
         panel2!!.add(e2)
         panel3!!.add(e3)
@@ -44,8 +44,33 @@ class Ventana(titulo:String?):JFrame(titulo){
         e2.setBounds(10,90,120,60)
         e3.setBounds(10,90,120,60)
         e1.foreground=Color.white
-        e3.foreground=Color.black
+        e2.foreground=Color.white
         e3.foreground=Color.white
-        panel1!!.setVisible(false)
+        //panel1!!.setVisible(false)
+
+        e1.background=Color.BLACK
+        e2.background=Color.BLACK
+        e3.background=Color.BLACK
+
+        e1.setOpaque(true)
+        e2.setOpaque(true)
+        e3.setOpaque(true)
+
+        /*
+        HorizontalAlignment
+        CENTER  = 0
+        LEFT    = 2
+        RIGHT   = 4
+
+        VerticalAlignment
+        TOP     = 1
+        BOTTOM  = 3
+	    */
+        e1.horizontalAlignment=SwingConstants.LEFT
+        e2.horizontalAlignment=SwingConstants.CENTER
+        e3.horizontalAlignment=SwingConstants.RIGHT
+
+        e1.verticalAlignment=SwingConstants.TOP
+        e2.verticalAlignment=SwingConstants.BOTTOM
     }
 }
