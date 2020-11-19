@@ -1,21 +1,44 @@
-import java.awt.Color
-import java.awt.Dimension
-import java.awt.Font
-import java.awt.Image
+import java.awt.*
+import java.awt.event.KeyEvent
 import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
     var panel=ArrayList<JPanel>()
     var etiqueta=ArrayList<JLabel>()
     var num=4
+    var botonSwing:JButton?=null
+    var botonAWT:Button?=null
     init {
-        num=JOptionPane.showInputDialog("Humano ingresa la cantidad de paneles").toInt()
+        //num=JOptionPane.showInputDialog("Humano ingresa la cantidad de paneles").toInt()
         var d=Dimension(num*150,500)
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
         //this.setLocation(500,500)
-        agregarPanel()
-        agregarEtiquetas()
+        //agregarPanel()
+        //agregarEtiquetas()
+        agregaBoton()
+    }
+    fun agregaBoton(){
+        var logo=ImageIcon("src/images/kotlin.png")
+        var logoMin=ImageIcon(logo.image.getScaledInstance(30,30, Image.SCALE_DEFAULT))
+
+        var contenedor=JPanel()
+        this.contentPane.add(contenedor)
+        contenedor.layout=null
+        botonSwing= JButton("Dame like!!!!",logoMin)
+        contenedor.add(botonSwing)
+        botonSwing!!.text="Que me des liiikeee!!!!"
+        botonSwing!!.setBounds(100,100,180,40)
+        botonSwing!!.isEnabled=true
+        //botonSwing!!.mnemonic='F'.toInt()
+        botonSwing!!.mnemonic=KeyEvent.VK_F
+
+        botonAWT= Button("Soy AWT feo pero dame like!!!")
+        contenedor.add(botonAWT)
+        botonAWT!!.setBounds(100,200,180,40)
+        botonAWT!!.label="Que me de like!!!!"
+        botonAWT!!.isEnabled=true
+
     }
     fun agregarPanel(){
 
