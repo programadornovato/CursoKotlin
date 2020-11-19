@@ -28,10 +28,14 @@ class Ventana(titulo:String?):JFrame(titulo){
         botonSwing= JButton("Dame like!!!!",logoMin)
         contenedor.add(botonSwing)
         botonSwing!!.text="Que me des liiikeee!!!!"
-        botonSwing!!.setBounds(100,100,180,40)
+        botonSwing!!.setBounds(100,100,300,40)
         botonSwing!!.isEnabled=true
         //botonSwing!!.mnemonic='F'.toInt()
         botonSwing!!.mnemonic=KeyEvent.VK_F
+        botonSwing!!.icon=ImageIcon(ImageIcon("src/images/like.png").image.getScaledInstance(20,20,Image.SCALE_FAST))
+        botonSwing!!.font= Font(Font.MONOSPACED,Font.ITALIC,12)
+        botonSwing!!.foreground=Color.BLACK
+        botonSwing!!.background=Color.WHITE
 
         botonAWT= Button("Soy AWT feo pero dame like!!!")
         contenedor.add(botonAWT)
