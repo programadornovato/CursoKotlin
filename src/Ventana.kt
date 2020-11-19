@@ -1,6 +1,7 @@
 import java.awt.Color
 import java.awt.Dimension
 import java.awt.Font
+import java.awt.Image
 import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
@@ -32,8 +33,10 @@ class Ventana(titulo:String?):JFrame(titulo){
         //panel3!!.setVisible(false)
     }
     fun agregarEtiquetas(){
-        var e1=JLabel("<html>Hola1</html>")
-        var e2=JLabel("<html>Hola2</html>")
+        var logo=ImageIcon("src/images/kotlin.png")
+        var logoMin=ImageIcon(logo.image.getScaledInstance(60,60, Image.SCALE_DEFAULT))
+        var e1=JLabel("<html>Hola1</html>",logoMin,SwingConstants.LEFT)
+        var e2=JLabel("")
         var e3=JLabel("<html>Hola3</html>")
         panel1!!.add(e1)
         panel2!!.add(e2)
@@ -55,7 +58,7 @@ class Ventana(titulo:String?):JFrame(titulo){
 
         e1.setOpaque(true)
         e2.setOpaque(true)
-        e3.setOpaque(true)
+        e3.setOpaque(false)
 
         /*
         HorizontalAlignment
@@ -95,6 +98,7 @@ class Ventana(titulo:String?):JFrame(titulo){
         e1.font=Font("Cambria",Font.ITALIC,15)
         e2.font=Font("Amiri",Font.BOLD,15)
         e3.font=Font("Bahnschrift Condensed",Font.CENTER_BASELINE,15)
-
+        e2.icon=ImageIcon(ImageIcon("src/images/kotlin.png").image.getScaledInstance(60,60,Image.SCALE_FAST))
+        e3.icon=ImageIcon(ImageIcon("src/images/kotlin.png").image.getScaledInstance(60,60,Image.SCALE_FAST))
     }
 }
