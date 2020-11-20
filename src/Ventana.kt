@@ -16,14 +16,32 @@ class Ventana(titulo:String?):JFrame(titulo){
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
         this.contentPane.add(contenedor)
-        //contenedor.layout=null
+        contenedor.layout=null
         //this.setLocation(500,500)
         //agregarPanel()
         //agregarEtiquetas()
         //agregaBoton()
         //agregarRadio()
         //agregarCampoTexto()
-        agregarAreaTexto()
+        //agregarAreaTexto()
+        agregaListaDesplegable()
+    }
+    fun agregaListaDesplegable(){
+        var lenguajes= arrayOf<String>(
+                "Kotlin",
+                "Java",
+                "C++",
+                "Python",
+                "Javascript"
+        )
+        var listaDesplegable=JComboBox(lenguajes)
+        listaDesplegable.setBounds(10,10,300,60)
+        listaDesplegable.addItem("VisualBasic")
+        //listaDesplegable.selectedIndex=3
+        listaDesplegable.selectedItem="C++"
+        println("Index seleccionado=${listaDesplegable.selectedIndex}")
+        println("Valor seleccionado=${listaDesplegable.selectedItem}")
+        contenedor.add(listaDesplegable)
     }
     fun agregarAreaTexto(){
         //contenedor.layout=null
