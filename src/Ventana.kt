@@ -8,15 +8,45 @@ class Ventana(titulo:String?):JFrame(titulo){
     var num=4
     var botonSwing:JButton?=null
     var botonAWT:Button?=null
+    var contenedor=JPanel()
+    var radioBoton=ArrayList<JRadioButton>()
     init {
         //num=JOptionPane.showInputDialog("Humano ingresa la cantidad de paneles").toInt()
         var d=Dimension(num*150,500)
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
+        this.contentPane.add(contenedor)
+        contenedor.layout=null
         //this.setLocation(500,500)
         //agregarPanel()
         //agregarEtiquetas()
-        agregaBoton()
+        //agregaBoton()
+        agregarRadio()
+    }
+    fun agregarRadio(){
+        var grupo=ButtonGroup()
+        var textos= arrayOf(
+                "Humano dame click",
+                "No,no,no humano dame click a mi",
+                "Humano dame click y unete a lado hocuro de fuerza"
+        )
+        for (i in textos.indices){
+            radioBoton.add(JRadioButton())
+            radioBoton[i].text=textos[i]
+            radioBoton[i].setBounds(10,100 + i *50,550,50)
+            radioBoton[i].font=Font(Font.MONOSPACED,Font.BOLD,16)
+            grupo.add(radioBoton[i])
+            contenedor.add(radioBoton[i])
+            if(i==2){
+                radioBoton[i].isSelected=true
+            }
+        }
+        /*
+        var rd=JRadioButton("Humano dame click")
+        rd.setBounds(100,100,200,20)
+        rd.isEnabled=true
+        contenedor.add(rd)
+        */
     }
     fun agregaBoton(){
         var logo=ImageIcon("src/images/kotlin.png")
