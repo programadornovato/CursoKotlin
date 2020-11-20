@@ -16,12 +16,31 @@ class Ventana(titulo:String?):JFrame(titulo){
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
         this.contentPane.add(contenedor)
-        contenedor.layout=null
+        //contenedor.layout=null
         //this.setLocation(500,500)
         //agregarPanel()
         //agregarEtiquetas()
         //agregaBoton()
-        agregarRadio()
+        //agregarRadio()
+        agregarCampoTexto()
+    }
+    fun agregarCampoTexto(){
+        var campoTexto1=JTextField()
+        campoTexto1.text="HHHHHHHHHHHHHHHHHHHH"
+        campoTexto1.font=Font(Font.MONOSPACED,Font.BOLD,20)
+        //campoTexto1.setBounds(100,100,200,20)
+        campoTexto1.columns=25
+        contenedor.add(campoTexto1)
+
+        var campoTexto2=JTextField()
+        campoTexto2.text="HHHHHHHHHHHHHHHHHHHH"
+        campoTexto2.font=Font(Font.MONOSPACED,Font.BOLD,30)
+        //campoTexto2.setBounds(100,100,200,20)
+        campoTexto2.columns=25
+        campoTexto2.background=Color.BLUE
+        campoTexto2.foreground=Color.YELLOW
+        contenedor.add(campoTexto2)
+
     }
     fun agregarRadio(){
         var grupo=ButtonGroup()
