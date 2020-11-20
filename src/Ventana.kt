@@ -22,7 +22,28 @@ class Ventana(titulo:String?):JFrame(titulo){
         //agregarEtiquetas()
         //agregaBoton()
         //agregarRadio()
-        agregarCampoTexto()
+        //agregarCampoTexto()
+        agregarAreaTexto()
+    }
+    fun agregarAreaTexto(){
+        //contenedor.layout=null
+        var areaTexto=JTextArea()
+        areaTexto.text="Humano aqui va el texto\nHumano aqui va mas texto\nHumano aqui va el texto\n"
+        areaTexto.append("Humano aqui va mas texto\n")
+        areaTexto.append("Humano aqui va mas texto\n")
+        areaTexto.append("Humano aqui va mas texto\n")
+        areaTexto.append("Humano aqui va mas texto\n")
+        areaTexto.append("Humano aqui va mas texto\n")
+        areaTexto.append("Humano aqui va mas texto\n")
+        areaTexto.columns=25
+        areaTexto.rows=7
+        //areaTexto.setBounds(20,20,50,50)
+        var scroll=JScrollPane(areaTexto)
+        //scroll.setBounds(20,20,50,50)
+        areaTexto.isEnabled=true
+        areaTexto.isEditable=false
+
+        contenedor.add(scroll)
     }
     fun agregarCampoTexto(){
         var campoTexto1=JTextField()
