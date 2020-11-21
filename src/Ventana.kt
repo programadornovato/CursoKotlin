@@ -1,5 +1,6 @@
 import java.awt.*
 import java.awt.event.*
+import java.lang.Exception
 import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
@@ -12,7 +13,44 @@ class Ventana(titulo:String?):JFrame(titulo){
         contenedor.layout=null
         //evento()
         //eventosRaton()
-        eventoTeclado()
+        //eventoTeclado()
+        validarNumero()
+    }
+    fun validarNumero(){
+        var caja=JTextField()
+        caja.setBounds(10,10,400,30)
+        contenedor.add(caja)
+
+        var areaTexto=JTextArea()
+        areaTexto.setBounds(10,50,400,200)
+        contenedor.add(areaTexto)
+
+        var l:KeyListener=object :KeyListener{
+            override fun keyPressed(e: KeyEvent?) {
+
+            }
+
+            override fun keyTyped(e: KeyEvent?) {
+
+            }
+
+            override fun keyReleased(e: KeyEvent?) {
+                if(esNumero(caja.text)==true){
+                    areaTexto.append("Si humano, si es un numero\n")
+                }else{
+                    areaTexto.append("No humano estupido, esto no es un numero\n")
+                }
+            }
+        }
+        caja.addKeyListener(l)
+    }
+    fun esNumero(texto:String):Boolean{
+        try {
+            texto.toInt()
+            return true
+        }catch (e:Exception){
+            return false
+        }
     }
     fun eventoTeclado(){
         var caja=JTextField()
