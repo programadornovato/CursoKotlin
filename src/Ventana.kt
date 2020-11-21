@@ -1,6 +1,8 @@
 import java.awt.*
 import java.awt.event.*
 import java.lang.Exception
+import java.util.regex.Matcher
+import java.util.regex.Pattern
 import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
@@ -14,7 +16,39 @@ class Ventana(titulo:String?):JFrame(titulo){
         //evento()
         //eventosRaton()
         //eventoTeclado()
-        validarNumero()
+        //validarNumero()
+        validarCorreo()
+    }
+    fun validarCorreo(){
+        var caja=JTextField()
+        caja.setBounds(10,10,400,30)
+        contenedor.add(caja)
+
+        var areaTexto=JTextArea()
+        areaTexto.setBounds(10,50,400,200)
+        contenedor.add(areaTexto)
+
+        var l:KeyListener=object :KeyListener{
+            override fun keyPressed(e: KeyEvent?) {
+            }
+            override fun keyTyped(e: KeyEvent?) {
+            }
+            override fun keyReleased(e: KeyEvent?) {
+                if(e!!.keyChar=='\n'){
+                    if(esCorreo(caja.text)==true){
+                        areaTexto.append("Si humano, es cun correo\n")
+                    }else{
+                        areaTexto.append("No humano estupidoo, No es cun correo\n")
+                    }
+                }
+            }
+        }
+        caja.addKeyListener(l)
+    }
+    fun esCorreo(texto:String):Boolean{
+        var patroncito:Pattern=Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
+        var comparador:Matcher=patroncito.matcher(texto)
+        return comparador.find()
     }
     fun validarNumero(){
         var caja=JTextField()
