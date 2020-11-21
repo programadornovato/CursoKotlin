@@ -1,8 +1,5 @@
 import java.awt.*
-import java.awt.event.ActionListener
-import java.awt.event.KeyEvent
-import java.awt.event.MouseEvent
-import java.awt.event.MouseListener
+import java.awt.event.*
 import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
@@ -14,7 +11,39 @@ class Ventana(titulo:String?):JFrame(titulo){
         this.contentPane.add(contenedor)
         contenedor.layout=null
         //evento()
-        eventosRaton()
+        //eventosRaton()
+        eventoTeclado()
+    }
+    fun eventoTeclado(){
+        var caja=JTextField()
+        caja.setBounds(10,10,400,30)
+        contenedor.add(caja)
+
+        var areaTexto=JTextArea()
+        areaTexto.setBounds(10,50,400,200)
+        contenedor.add(areaTexto)
+
+        var l:KeyListener=object :KeyListener{
+            override fun keyPressed(e: KeyEvent?) {
+                areaTexto.append("keyPressed\n")
+            }
+            override fun keyTyped(e: KeyEvent?) {
+                areaTexto.append("keyTyped\n")
+            }
+            override fun keyReleased(e: KeyEvent?) {
+                //areaTexto.append("keyReleased\n")
+                if(e!!.keyChar=='*'){
+                    areaTexto.append("Soltaste el asterisco\n")
+                }
+                if(e!!.keyChar=='\n'){
+                    areaTexto.append("Soltaste el enter\n")
+                }
+                if(e!!.keyChar==' '){
+                    areaTexto.append("Soltaste el espacio\n")
+                }
+            }
+        }
+        caja.addKeyListener(l)
     }
     fun eventosRaton(){
         var boton=JButton("Humano ponte a jugar con tu raton (¡¡¡El de la compu!!!)")
