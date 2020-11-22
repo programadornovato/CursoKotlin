@@ -4,6 +4,7 @@ import javax.swing.JOptionPane
 fun main(args:Array<String>){
     var v=Ventana("Este es mi titulo ${getPid()}")
     v.isVisible=true
+    v.meteArgumentos(args)
     /*
     for(i in 1 .. 10){
         Thread.sleep(200)

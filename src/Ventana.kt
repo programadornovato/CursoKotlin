@@ -7,17 +7,25 @@ import javax.swing.*
 
 class Ventana(titulo:String?):JFrame(titulo){
     var contenedor=JPanel()
+    var muestraArgumentos=JTextArea()
     init {
         var d=Dimension(500,500)
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
         this.contentPane.add(contenedor)
         contenedor.layout=null
+        muestraArgumentos.setBounds(10,10,450,200)
+        contenedor.add(muestraArgumentos)
         //evento()
         //eventosRaton()
         //eventoTeclado()
         //validarNumero()
-        validarCorreo()
+        //validarCorreo()
+    }
+    fun meteArgumentos(argumentos:Array<String>){
+        argumentos.forEach {
+            muestraArgumentos.append("$it\n")
+        }
     }
     fun validarCorreo(){
         var caja=JTextField()
