@@ -1,176 +1,76 @@
-import java.awt.*
-import java.awt.event.*
-import java.lang.Exception
-import java.util.regex.Matcher
-import java.util.regex.Pattern
+import java.awt.Dimension
+import java.awt.Font
+import java.awt.event.MouseEvent
+import java.awt.event.MouseListener
 import javax.swing.*
 
-class Ventana(titulo:String?):JFrame(titulo){
+class Ventana ():JFrame(){
     var contenedor=JPanel()
-    var muestraArgumentos=JTextArea()
+    var etiquetaPide=JLabel("¿Quieres ser mi novi@?")
+    var etiquetaAcepta=JLabel("¡¡Sabia que caerias en mis brazos!!")
+    var botonSi=JButton("Si")
+    var botonNo=JButton("No")
     init {
-        var d=Dimension(500,500)
+        var d=Dimension(500,350)
         this.size=d
         defaultCloseOperation=WindowConstants.EXIT_ON_CLOSE
         this.contentPane.add(contenedor)
         contenedor.layout=null
-        muestraArgumentos.setBounds(10,10,450,200)
-        contenedor.add(muestraArgumentos)
-        //evento()
-        //eventosRaton()
-        //eventoTeclado()
-        //validarNumero()
-        //validarCorreo()
+        contenido()
+        eventos()
     }
-    fun meteArgumentos(argumentos:Array<String>){
-        argumentos.forEach {
-            muestraArgumentos.append("$it\n")
-        }
+    fun eventos(){
+        eventoClickSi()
+        eventoEntraNo()
     }
-    fun validarCorreo(){
-        var caja=JTextField()
-        caja.setBounds(10,10,400,30)
-        contenedor.add(caja)
-
-        var areaTexto=JTextArea()
-        areaTexto.setBounds(10,50,400,200)
-        contenedor.add(areaTexto)
-
-        var l:KeyListener=object :KeyListener{
-            override fun keyPressed(e: KeyEvent?) {
-            }
-            override fun keyTyped(e: KeyEvent?) {
-            }
-            override fun keyReleased(e: KeyEvent?) {
-                if(e!!.keyChar=='\n'){
-                    if(esCorreo(caja.text)==true){
-                        areaTexto.append("Si humano, es cun correo\n")
-                    }else{
-                        areaTexto.append("No humano estupidoo, No es cun correo\n")
-                    }
-                }
-            }
-        }
-        caja.addKeyListener(l)
-    }
-    fun esCorreo(texto:String):Boolean{
-        var patroncito:Pattern=Pattern.compile("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")
-        var comparador:Matcher=patroncito.matcher(texto)
-        return comparador.find()
-    }
-    fun validarNumero(){
-        var caja=JTextField()
-        caja.setBounds(10,10,400,30)
-        contenedor.add(caja)
-
-        var areaTexto=JTextArea()
-        areaTexto.setBounds(10,50,400,200)
-        contenedor.add(areaTexto)
-
-        var l:KeyListener=object :KeyListener{
-            override fun keyPressed(e: KeyEvent?) {
-
-            }
-
-            override fun keyTyped(e: KeyEvent?) {
-
-            }
-
-            override fun keyReleased(e: KeyEvent?) {
-                if(esNumero(caja.text)==true){
-                    areaTexto.append("Si humano, si es un numero\n")
-                }else{
-                    areaTexto.append("No humano estupido, esto no es un numero\n")
-                }
-            }
-        }
-        caja.addKeyListener(l)
-    }
-    fun esNumero(texto:String):Boolean{
-        try {
-            texto.toInt()
-            return true
-        }catch (e:Exception){
-            return false
-        }
-    }
-    fun eventoTeclado(){
-        var caja=JTextField()
-        caja.setBounds(10,10,400,30)
-        contenedor.add(caja)
-
-        var areaTexto=JTextArea()
-        areaTexto.setBounds(10,50,400,200)
-        contenedor.add(areaTexto)
-
-        var l:KeyListener=object :KeyListener{
-            override fun keyPressed(e: KeyEvent?) {
-                areaTexto.append("keyPressed\n")
-            }
-            override fun keyTyped(e: KeyEvent?) {
-                areaTexto.append("keyTyped\n")
-            }
-            override fun keyReleased(e: KeyEvent?) {
-                //areaTexto.append("keyReleased\n")
-                if(e!!.keyChar=='*'){
-                    areaTexto.append("Soltaste el asterisco\n")
-                }
-                if(e!!.keyChar=='\n'){
-                    areaTexto.append("Soltaste el enter\n")
-                }
-                if(e!!.keyChar==' '){
-                    areaTexto.append("Soltaste el espacio\n")
-                }
-            }
-        }
-        caja.addKeyListener(l)
-    }
-    fun eventosRaton(){
-        var boton=JButton("Humano ponte a jugar con tu raton (¡¡¡El de la compu!!!)")
-        boton.setBounds(10,10,450,30)
-        contenedor.add(boton)
-
-        var caja=JTextField()
-        caja.setBounds(10,50,400,30)
-        contenedor.add(caja)
-
+    fun eventoEntraNo(){
         var l:MouseListener=object :MouseListener{
             override fun mouseClicked(e: MouseEvent?) {
-                //caja.text="mouseClicked"
             }
             override fun mouseEntered(e: MouseEvent?) {
-                caja.text="mouseEntered"
+                var xRandom=(100..400).random()
+                var yRandom=(30..270).random()
+                botonNo.setLocation(xRandom,yRandom)
+                println("xRandom=$xRandom,yRandom=$yRandom")
             }
             override fun mouseExited(e: MouseEvent?) {
-                caja.text="mouseExited"
             }
             override fun mousePressed(e: MouseEvent?) {
-                caja.text="mousePressed"
             }
             override fun mouseReleased(e: MouseEvent?) {
-                caja.text="mouseReleased"
             }
         }
-        boton.addMouseListener(l)
+        botonNo.addMouseListener(l)
     }
-    fun evento(){
-        var boton=JButton("Humano coloca tu miserable nombre en el cuadro de texto y da click aqui")
-        boton.setBounds(10,10,450,30)
-        contenedor.add(boton)
-
-        var caja=JTextField()
-        caja.setBounds(10,50,400,30)
-        contenedor.add(caja)
-
-        var etiqueta=JLabel()
-        etiqueta.setBounds(10,100,400,30)
-        contenedor.add(etiqueta)
-
-        var accion=ActionListener{
-            etiqueta.text="Hola ${caja.text}"
+    fun eventoClickSi(){
+        var l:MouseListener=object :MouseListener{
+            override fun mouseClicked(e: MouseEvent?) {
+                etiquetaAcepta.isVisible=true
+            }
+            override fun mouseEntered(e: MouseEvent?) {
+            }
+            override fun mouseExited(e: MouseEvent?) {
+            }
+            override fun mousePressed(e: MouseEvent?) {
+            }
+            override fun mouseReleased(e: MouseEvent?) {
+            }
         }
-        boton.addActionListener(accion)
+        botonSi.addMouseListener(l)
+    }
+    fun contenido(){
+        etiquetaPide.setBounds(120,10,300,30)
+        etiquetaPide.font=Font(Font.MONOSPACED,Font.ITALIC,20)
+        contenedor.add(etiquetaPide)
 
+        botonNo.setBounds(100,50,100,30)
+        contenedor.add(botonNo)
+        botonSi.setBounds(300,50,100,30)
+        contenedor.add(botonSi)
 
+        etiquetaAcepta.setBounds(1,250,450,30)
+        etiquetaAcepta.font=Font(Font.MONOSPACED,Font.ITALIC,20)
+        contenedor.add(etiquetaAcepta)
+        etiquetaAcepta.isVisible=false
     }
 }
